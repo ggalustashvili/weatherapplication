@@ -11,8 +11,8 @@ export class WeatherService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getWeather(latitude: number , longitude: number): Observable<any>{
-    return this.http.get<any>(`${environment.baseUrl}/weather?lat=${latitude}.617361&lon=${longitude}.598827&appid=${environment.api_key}`)
+  public getWeather(latitude: number , longitude: number): Observable<WeatherData>{
+    return this.http.get<WeatherData>(`${environment.baseUrl}/weather?lat=${latitude}.617361&lon=${longitude}.598827&appid=${environment.api_key}`)
   }
 }
 
