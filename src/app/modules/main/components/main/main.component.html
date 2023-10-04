@@ -1,0 +1,26 @@
+<div>
+  <form [formGroup]="formData" (ngSubmit)="getUsrLocationByInput(formData.value)">
+    <label for="altitude"> enter altitude (E.X 44 )
+      <input id="altitude" type="number" inputmode="numeric" formControlName="latitude">
+    </label>
+    <label for="longitude"> enter longitude (E.X 11)
+      <input id="longitude" type="number" formControlName="longitude">
+    </label>
+    <button type="submit"></button>
+  </form>
+</div>
+
+<ng-container *ngIf="data$ | async as data; else loading">
+  <div>
+    <p> {{ "feel like: " + data.weather[0].description }} </p>
+    <p> {{ "temp: " + data.main.temp }}</p>
+    <p>  {{ "feel like: " + data.main.feels_like}}</p>
+    <p>   {{ "humidity: " + data.main.humidity}}</p>
+    <p>   {{ "sea_level: " + data.main.sea_level}}</p>
+    <p>   {{ "speed: " + data.wind.speed}}</p>
+    <p>   {{ "visibility: " + data.visibility}}</p>
+  </div>
+</ng-container>
+<ng-template #loading>
+  loading...
+</ng-template>
